@@ -6,6 +6,7 @@ class CashRegister:
       self.discount = discount
       self.total = total
       self.items = items
+      # self.quantity = quantity
 
   @property
   def discount(self):
@@ -31,3 +32,20 @@ class CashRegister:
   def items(self, items):
       self._items = items
 
+  # @property
+  # def quantity(self):
+  #     return self._quantity
+  
+  # @quantity.setter
+  # def quantity(self, quantity):
+  #     self._quantity = quantity
+
+  def add_item(self, title, price, quantity=0):
+      # breakpoint()
+      if quantity > 0:
+        self.total += (price * quantity) 
+        return self.total
+      else:
+        self.total += price
+        return self.total
+      
