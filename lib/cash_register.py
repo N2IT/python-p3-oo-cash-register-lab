@@ -6,7 +6,7 @@ class CashRegister:
       self.discount = discount
       self.total = 0
       self.items = []
-      # self.quantity = quantity
+      self.transactions = []
 
   # @property
   # def discount(self):
@@ -40,28 +40,39 @@ class CashRegister:
   # def quantity(self, quantity):
   #     self._quantity = quantity
 
+  # def last_item(last):
+  #   print(last[-1])
+
   def add_item(self, title, price, quantity=0):
-      # breakpoint()
-      # self.items.append(title)
       if quantity > 0:
         x = range(quantity)
-        breakpoint()
         for q in x:
           self.items.append(title)
+          self.transactions.append(price * quantity)
         self.total += (price * quantity)
         return self.total
       else:
         self.items.append(title)
+        self.transactions.append(price)
         self.total += price
         return self.total
-      return self.items
       
+      return self.items
+
   def apply_discount(self):
-    # breakpoint()
     self.total = int(self.total - (self.discount * 10))
-    # print('There is not discount to apply.')
     if self.discount > 0:
       print(f'After the discount, the total comes to ${self.total}.')
       return self.total
     else:
       print('There is no discount to apply.')
+
+  def void_last_transaction(self):
+    # self.total = self.total - self.transactions[-1]
+    # return self.total
+    self.total = self.total - self.transactions.pop(-1)
+    return self.total
+
+    
+    
+    
